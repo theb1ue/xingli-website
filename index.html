@@ -86,6 +86,38 @@
             color: var(--accent-primary);
         }
 
+        /* Language Toggle */
+        .lang-toggle {
+            padding: 8px 18px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 50px;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 24px;
+            flex-shrink: 0;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: var(--hover-bg);
+        }
+
+        .nav-links + .lang-toggle {
+            margin-left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links.active + .lang-toggle {
+                display: inline-block;
+            }
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -525,12 +557,13 @@
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="logo">猩力<span>科技</span></div>
+        <div class="logo" data-i18n-html="logo">猩力<span>科技</span></div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#products">产品</a></li>
-            <li><a href="#about">关于</a></li>
-            <li><a href="#contact">联系</a></li>
+            <li><a href="#products" data-i18n="nav.products">产品</a></li>
+            <li><a href="#about" data-i18n="nav.about">关于</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">联系</a></li>
         </ul>
+        <button type="button" class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
         <div class="menu-toggle" id="menuToggle">
             <span></span>
             <span></span>
@@ -541,17 +574,17 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">创新驱动未来</div>
-            <h1>用科技连接<span class="highlight">生活</span><br>用创新点亮<span class="highlight">未来</span></h1>
-            <p>苏州猩力科技有限公司，专注于移动互联网应用开发，致力于为用户打造优质的产品体验</p>
+            <div class="hero-badge" data-i18n="hero.badge">创新驱动未来</div>
+            <h1 data-i18n-html="hero.title">用科技连接<span class="highlight">生活</span><br>用创新点亮<span class="highlight">未来</span></h1>
+            <p data-i18n="hero.subtitle">苏州猩力科技有限公司，专注于移动互联网应用开发，致力于为用户打造优质的产品体验</p>
             <div class="hero-cta">
                 <a href="#products" class="btn btn-primary">
-                    探索产品
+                    <span data-i18n="hero.cta.main">探索产品</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
-                <a href="#about" class="btn btn-secondary">了解更多</a>
+                <a href="#about" class="btn btn-secondary" data-i18n="hero.cta.secondary">了解更多</a>
             </div>
         </div>
     </section>
@@ -559,35 +592,35 @@
     <!-- Products Section -->
     <section class="products" id="products">
         <div class="section-header">
-            <h2>我们的产品</h2>
-            <p>打造精品应用，让科技融入日常生活</p>
+            <h2 data-i18n="products.title">我们的产品</h2>
+            <p data-i18n="products.subtitle">打造精品应用，让科技融入日常生活</p>
         </div>
         <div class="products-grid">
             <!-- 厨树 App -->
             <div class="product-card">
                 <div class="product-icon">🍳</div>
-                <h3>厨树</h3>
-                <p class="tagline">你的私人厨房管家</p>
-                <p class="description">精选万道家常菜谱，智能推荐，一键采购，让做饭变得更简单。</p>
-                <a href="#" class="btn btn-primary">立即下载</a>
+                <h3 data-i18n="product.chushu.name">厨树</h3>
+                <p class="tagline" data-i18n="product.chushu.tagline">你的私人厨房管家</p>
+                <p class="description" data-i18n="product.chushu.desc">精选万道家常菜谱，智能推荐，一键采购，让做饭变得更简单。</p>
+                <a href="#" class="btn btn-primary" data-i18n="product.download">立即下载</a>
             </div>
 
             <!-- 每日蛙 -->
             <div class="product-card">
                 <div class="product-icon">🐸</div>
-                <h3>每日蛙</h3>
-                <p class="tagline">每天进步一点点</p>
-                <p class="description">趣味外语学习，AI口语陪练，让语言学习像玩游戏一样有趣。</p>
-                <a href="#" class="btn btn-primary">立即下载</a>
+                <h3 data-i18n="product.frog.name">每日蛙</h3>
+                <p class="tagline" data-i18n="product.frog.tagline">每天进步一点点</p>
+                <p class="description" data-i18n="product.frog.desc">趣味外语学习，AI口语陪练，让语言学习像玩游戏一样有趣。</p>
+                <a href="#" class="btn btn-primary" data-i18n="product.download">立即下载</a>
             </div>
 
             <!-- 每日猩球 -->
             <div class="product-card">
                 <div class="product-icon">🏋️</div>
-                <h3>每日猩球</h3>
-                <p class="tagline">在家也能科学健身</p>
-                <p class="description">专业教练课程，智能训练计划，随时随地开启健身之旅。</p>
-                <a href="#" class="btn btn-primary">立即下载</a>
+                <h3 data-i18n="product.xingqiu.name">每日猩球</h3>
+                <p class="tagline" data-i18n="product.xingqiu.tagline">在家也能科学健身</p>
+                <p class="description" data-i18n="product.xingqiu.desc">专业教练课程，智能训练计划，随时随地开启健身之旅。</p>
+                <a href="#" class="btn btn-primary" data-i18n="product.download">立即下载</a>
             </div>
         </div>
     </section>
@@ -595,21 +628,21 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="about-content">
-            <h2>关于猩力科技</h2>
-            <p>苏州猩力科技有限公司成立于苏州，是一家专注于移动互联网应用开发的科技公司。我们秉持"用户至上、创新驱动"的理念，致力于为用户提供优质的产品体验。</p>
-            <p style="margin-top: 16px;">旗下产品涵盖美食、健康、学习等多个领域，服务数百万用户。我们将继续深耕移动互联网领域，用技术创造价值，用创新引领未来。</p>
+            <h2 data-i18n="about.title">关于猩力科技</h2>
+            <p data-i18n="about.p1">苏州猩力科技有限公司成立于苏州，是一家专注于移动互联网应用开发的科技公司。我们秉持"用户至上、创新驱动"的理念，致力于为用户提供优质的产品体验。</p>
+            <p style="margin-top: 16px;" data-i18n="about.p2">旗下产品涵盖美食、健康、学习等多个领域，服务数百万用户。我们将继续深耕移动互联网领域，用技术创造价值，用创新引领未来。</p>
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-number">3+</div>
-                    <div class="stat-label">款产品</div>
+                    <div class="stat-label" data-i18n="stat.products">款产品</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">100万+</div>
-                    <div class="stat-label">用户</div>
+                    <div class="stat-label" data-i18n="stat.users">用户</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">4.8</div>
-                    <div class="stat-label">平均评分</div>
+                    <div class="stat-label" data-i18n="stat.rating">平均评分</div>
                 </div>
             </div>
         </div>
@@ -618,16 +651,17 @@
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
-            <div class="footer-logo">猩力<span>科技</span></div>
+            <div class="footer-logo" data-i18n-html="logo">猩力<span>科技</span></div>
             <ul class="footer-links">
-                <li><a href="#products">产品</a></li>
-                <li><a href="#about">关于</a></li>
-                <li><a href="terms.html">服务条款</a></li>
+                <li><a href="#products" data-i18n="nav.products">产品</a></li>
+                <li><a href="#about" data-i18n="nav.about">关于</a></li>
+                <li><a href="terms.html" data-i18n="nav.terms">服务条款</a></li>
             </ul>
-            <p class="footer-copy">© 2026 苏州猩力科技有限公司. All rights reserved.</p>
+            <p class="footer-copy" data-i18n="copyright">© 2026 苏州猩力科技有限公司. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="i18n.js"></script>
     <script>
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
